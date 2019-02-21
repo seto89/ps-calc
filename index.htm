@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="page">
+    <main id="calc">
+        <div class="inner">
+            <div id="calc-inputcontainer">
+                <div id="calc-inputparent" data-value="">
+                    <input id="calc-input" value="" type="text" placeholder="0" disabled />
+                </div>
+            </div>
+            <input class="calc-option" value="Calculator" id="calc-option-calculator" type="radio" name="calc-option" checked />
+            <input class="calc-option" value="Keyboard" id="calc-option-keyboard" type="radio" name="calc-option" />
+            <input class="calc-option" value="Variables" id="calc-option-variables" type="radio" name="calc-option" onclick="definevars()" />
+            <input class="calc-option" value="History" id="calc-option-history" type="radio" name="calc-option" />
+            <div id="calc-panelcontainer">
+                <!-- Keyboard START -->
+                <div class="calc-panel" id="calc-keyboard">
+                    <section id="calc-keyboard-numbers">
+                        <button accesskey="1" class="calc-btn" id="calc-kbd-1" onclick="addToInput('1')">1</button>
+                        <button accesskey="2" class="calc-btn" id="calc-kbd-2" onclick="addToInput('2')">2</button>
+                        <button accesskey="3" class="calc-btn" id="calc-kbd-3" onclick="addToInput('3')">3</button>
+                        <button accesskey="4" class="calc-btn" id="calc-kbd-4" onclick="addToInput('4')">4</button>
+                        <button accesskey="5" class="calc-btn" id="calc-kbd-5" onclick="addToInput('5')">5</button>
+                        <button accesskey="6" class="calc-btn" id="calc-kbd-6" onclick="addToInput('6')">6</button>
+                        <button accesskey="7" class="calc-btn" id="calc-kbd-7" onclick="addToInput('7')">7</button>
+                        <button accesskey="8" class="calc-btn" id="calc-kbd-8" onclick="addToInput('8')">8</button>
+                        <button accesskey="9" class="calc-btn" id="calc-kbd-9" onclick="addToInput('9')">9</button>
+                        <button accesskey="0" class="calc-btn" id="calc-kbd-0" onclick="addToInput('0')">0</button>
+                        <button accesskey="." class="calc-btn" id="calc-kbd-dot" onclick="addToInput('.')">.</button>
+                        <button accesskey="," class="calc-btn" id="calc-kbd-comma" onclick="addToInput(',')">,</button>
+                    </section>
+                    <section id="calc-keyboard-chars">
+                        <button accesskey="q" class="calc-btn" id="calc-kbd-q" onclick="addToInput('q')">q</button>
+                        <button accesskey="w" class="calc-btn" id="calc-kbd-w" onclick="addToInput('w')">w</button>
+                        <button accesskey="e" class="calc-btn" id="calc-kbd-e" onclick="addToInput('e')">e</button>
+                        <button accesskey="r" class="calc-btn" id="calc-kbd-r" onclick="addToInput('r')">r</button>
+                        <button accesskey="t" class="calc-btn" id="calc-kbd-t" onclick="addToInput('t')">t</button>
+                        <button accesskey="y" class="calc-btn" id="calc-kbd-y" onclick="addToInput('y')">y</button>
+                        <button accesskey="u" class="calc-btn" id="calc-kbd-u" onclick="addToInput('u')">u</button>
+                        <button accesskey="i" class="calc-btn" id="calc-kbd-i" onclick="addToInput('i')">i</button>
+                        <button accesskey="o" class="calc-btn" id="calc-kbd-o" onclick="addToInput('o')">o</button>
+                        <button accesskey="p" class="calc-btn" id="calc-kbd-p" onclick="addToInput('p')">p</button>
+                        <button accesskey="a" class="calc-btn" id="calc-kbd-a" onclick="addToInput('a')">a</button>
+                        <button accesskey="s" class="calc-btn" id="calc-kbd-s" onclick="addToInput('s')">s</button>
+                        <button accesskey="d" class="calc-btn" id="calc-kbd-d" onclick="addToInput('d')">d</button>
+                        <button accesskey="f" class="calc-btn" id="calc-kbd-f" onclick="addToInput('f')">f</button>
+                        <button accesskey="g" class="calc-btn" id="calc-kbd-g" onclick="addToInput('g')">g</button>
+                        <button accesskey="h" class="calc-btn" id="calc-kbd-h" onclick="addToInput('h')">h</button>
+                        <button accesskey="j" class="calc-btn" id="calc-kbd-j" onclick="addToInput('j')">j</button>
+                        <button accesskey="k" class="calc-btn" id="calc-kbd-k" onclick="addToInput('k')">k</button>
+                        <button accesskey="l" class="calc-btn" id="calc-kbd-l" onclick="addToInput('l')">l</button>
+                        <button accesskey="\" class="calc-btn" id="calc-kbd-bksp" onclick="removeFromInput()">&#8592;</button>
+                        <button accesskey="z" class="calc-btn" id="calc-kbd-z" onclick="addToInput('z')">z</button>
+                        <button accesskey="x" class="calc-btn" id="calc-kbd-x" onclick="addToInput('x')">x</button>
+                        <button accesskey="c" class="calc-btn" id="calc-kbd-c" onclick="addToInput('c')">c</button>
+                        <button accesskey="v" class="calc-btn" id="calc-kbd-v" onclick="addToInput('v')">v</button>
+                        <button accesskey="b" class="calc-btn" id="calc-kbd-b" onclick="addToInput('b')">b</button>
+                        <button accesskey="n" class="calc-btn" id="calc-kbd-n" onclick="addToInput('n')">n</button>
+                        <button accesskey="m" class="calc-btn" id="calc-kbd-m" onclick="addToInput('m')">m</button>
+                        <button accesskey='"' class="calc-btn" id="calc-kbd-quote" onclick=`${addToInput('"')}`>"</button>
+                        <button accesskey="|" class="calc-btn" id="calc-kbd-clear" onclick="clearInput();">Clear</button>
+                        <button accesskey="`" class="calc-btn" id="calc-kbd-vars" onclick="addToInput(' vars(&quot;&quot;) ')">vars</button>
+                        <button accesskey="~" class="calc-btn" id="calc-kbd-ans" onclick="addToInput(' ans ')">ans</button>
+                        <button accesskey=" " class="calc-btn" id="calc-kbd-sp" onclick="addToInput(' ')"> </button>
+                        <button accesskey="<" class="calc-btn" id="calc-kbd-lcurs" onclick="cursorGo(-1)">&#9664;</button>
+                        <button accesskey=">" class="calc-btn" id="calc-kbd-rcurs" onclick="cursorGo(1)">&#9654;</button>
+                    </section>
+                    <section id="calc-keyboard-opers">
+                        <button accesskey="+" class="calc-btn" id="calc-kbd-add" onclick="addToInput('+')">+</button>
+                        <button accesskey="/" class="calc-btn" id="calc-kbd-div" onclick="addToInput('/')">/</button>
+                        <button accesskey="=" class="calc-btn" id="calc-kbd-answer" onclick="evalEquation()">=</button>
+                        <button accesskey="-" class="calc-btn" id="calc-kbd-sub" onclick="addToInput('-')">-</button>
+                        <button accesskey="(" class="calc-btn" id="calc-kbd-opar" onclick="addToInput('(')">(</button>
+                        <button accesskey=")" class="calc-btn" id="calc-kbd-cpar" onclick="addToInput(')')">)</button>
+                        <button accesskey="*" class="calc-btn" id="calc-kbd-mul" onclick="addToInput('*')">*</button>
+                        <button accesskey="[" class="calc-btn" id="calc-kbd-obra" onclick="addToInput('[')">[</button>
+                        <button accesskey="]" class="calc-btn" id="calc-kbd-cbra" onclick="addToInput(']')">]</button>
+                        <button accesskey="%" class="calc-btn" id="calc-kbd-mod" onclick="addToInput('%')">%</button>
+                        <button accesskey="{" class="calc-btn" id="calc-kbd-ocbr" onclick="addToInput('{')">{</button>
+                        <button accesskey="}" class="calc-btn" id="calc-kbd-ccbr" onclick="addToInput('}')">}</button>
+                    </section>
+                </div>
+                <!-- Keyboard END -->
+                <!-- Calculator START -->
+                <div class="calc-panel" id="calc-calculator">
+                    <section id="calc-calculator-numbers">
+                        <button accesskey="1" class="calc-btn" id="calc-calc-1" onclick="addToInput('1')">1</button>
+                        <button accesskey="2" class="calc-btn" id="calc-calc-2" onclick="addToInput('2')">2</button>
+                        <button accesskey="3" class="calc-btn" id="calc-calc-3" onclick="addToInput('3')">3</button>
+                        <button accesskey="4" class="calc-btn" id="calc-calc-4" onclick="addToInput('4')">4</button>
+                        <button accesskey="5" class="calc-btn" id="calc-calc-5" onclick="addToInput('5')">5</button>
+                        <button accesskey="6" class="calc-btn" id="calc-calc-6" onclick="addToInput('6')">6</button>
+                        <button accesskey="7" class="calc-btn" id="calc-calc-7" onclick="addToInput('7')">7</button>
+                        <button accesskey="8" class="calc-btn" id="calc-calc-8" onclick="addToInput('8')">8</button>
+                        <button accesskey="9" class="calc-btn" id="calc-calc-9" onclick="addToInput('9')">9</button>
+                        <button accesskey="0" class="calc-btn" id="calc-calc-0" onclick="addToInput('0')">0</button>
+                        <button accesskey="." class="calc-btn" id="calc-calc-dot" onclick="addToInput('.')">.</button>
+                    </section>
+                    <section id="calc-calculator-opers">
+                        <button accesskey="+" class="calc-btn" id="calc-calc-add" onclick="addToInput('+')">+</button>
+                        <button accesskey="/" class="calc-btn" id="calc-calc-div" onclick="addToInput('/')">&divide;</button>
+                        <button accesskey="^" class="calc-btn" id="calc-calc-expo" onclick="addToInput('expo(i,j)')">&times;<sup>n</sup></button>
+                        <button accesskey="-" class="calc-btn" id="calc-calc-sub" onclick="addToInput('-')">-</button>
+                        <button accesskey="m" class="calc-btn" id="calc-calc-mod" onclick="addToInput('mod(i,j)')">mod</button>
+                        <button accesskey="s" class="calc-btn" id="calc-calc-sqrd" onclick="addToInput('expo(i,2)')">&times;&sup2;</button>
+                        <button accesskey="*" class="calc-btn" id="calc-calc-mul" onclick="addToInput('*')">&times;</button>
+                        <button accesskey="a" class="calc-btn" id="calc-calc-avg" onclick="addToInput('avg()')">avg</button>
+                        <button accesskey="c" class="calc-btn" id="calc-calc-cbd"  onclick="addToInput('expo(i,3)')">&times;&sup3;</button>
+                        <button accesskey="%" class="calc-btn" id="calc-calc-pct" onclick="addToInput('pct(i,j)')">%</button>
+                        <button accesskey="r" class="calc-btn" id="calc-calc-round" onclick="addToInput(' round(i) ')">≈</button>
+                        <button accesskey="q" class="calc-btn" id="calc-calc-sqrt" onclick="addToInput('sqrt(i)')">&#8730;</button>
+                    </section>
+                    <section id="calc-calculator-punct">
+                        <button accesskey="(" class="calc-btn" id="calc-calc-opar" onclick="addToInput('(')">(</button>
+                        <button accesskey=")" class="calc-btn" id="calc-calc-cpar" onclick="addToInput(')')">)</button>
+                        <button accesskey='"' class="calc-btn" id="calc-calc-quote" onclick=`${addToInput('"')}`>"</button>
+                        <button accesskey="=" class="calc-btn" id="calc-calc-answer" onclick="evalEquation()">=</button>
+                        <button accesskey="(" class="calc-btn" id="calc-calc-ocbr" onclick="addToInput('{')">{</button>
+                        <button accesskey=")" class="calc-btn" id="calc-calc-ccbr" onclick="addToInput('}')">}</button>
+                        <button accesskey="," class="calc-btn" id="calc-calc-comma" onclick="addToInput(',')">,</button>
+                        <button accesskey="|" class="calc-btn" id="calc-calc-clear" onclick="clearInput();">Clear</button>
+                        <button accesskey="(" class="calc-btn" id="calc-calc-ocbr" onclick="addToInput('[')">[</button>
+                        <button accesskey=")" class="calc-btn" id="calc-calc-ccbr" onclick="addToInput(']')">]</button>
+                        <button accesskey=" " class="calc-btn" id="calc-calc-sp" onclick="addToInput(' ')"> </button>
+                        <button accesskey="\" class="calc-btn" id="calc-calc-bksp" onclick="removeFromInput();">&#8592;</button>
+                        <button accesskey="`" class="calc-btn" id="calc-calc-vars" onclick="addToInput(' vars(&quot;&quot;) ')">vars</button>
+                        <button accesskey="~" class="calc-btn" id="calc-calc-ans" onclick="addToInput(' ans ')">ans</button>
+                        <button accesskey="<" class="calc-btn" id="calc-calc-lcurs" onclick="cursorGo(-1)">&#9664;</button>
+                        <button accesskey=">" class="calc-btn" id="calc-calc-rcurs" onclick="cursorGo(1)">&#9654;</button>
+                    </section>
+                </div>
+                <!-- Calculator END -->
+                <div class="calc-panel" id="calc-variables" >
+                    <ul id="calc-variables-list" >
+                    </ul>
+                </div>
+                <div class="calc-panel" id="calc-history">
+                    <ul id="calc-history-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <aside id="sidebar">
+        <div class="inner">
+            <h2>Coming Soon</h2>
+            <ul>
+                <li>You get to define your own variables</li>
+                <li>A snazzy intro animation</li>
+                <li>A settings page</li>
+                <li>This sidebar having more uses</li>
+            </ul>
+        </div>
+    </aside>
+</div>
+<script src="js/script.js" type="text/javascript"></script>
+</body>
+</html>
